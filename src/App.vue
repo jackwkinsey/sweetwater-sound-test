@@ -1,6 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+    <Cart />
   </div>
 </template>
+
+<script>
+import Cart from './cart/Cart';
+
+export default {
+  name: 'app',
+  components: { Cart },
+};
+</script>
+
+<style></style>
