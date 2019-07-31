@@ -2,8 +2,15 @@
   <div>
     <h1>Your Cart</h1>
     <div class="item" v-for="(item, index) in cart" :key="index">
-      <div class="image">
-        <img :src="item.image" />
+      <div>
+        <img :src="item.image" class="item-image" />
+      </div>
+      <div class="item-details">
+        <h3 class="name">
+          <a :href="item.url" target="_blank">{{ item.productName }}</a> -
+          <small>{{ item.manufacturer }}</small>
+        </h3>
+        <p class="description">{{ item.description }}</p>
       </div>
     </div>
   </div>
@@ -20,4 +27,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.item {
+  display: flex;
+  align-items: center;
+}
+</style>
