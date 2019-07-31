@@ -46,6 +46,7 @@
     <div>
       <div class="text-right">
         <h3>Total: {{ total | currency }}</h3>
+        <button @click="saveCart()">Save Cart</button>
       </div>
     </div>
   </div>
@@ -86,6 +87,9 @@ export default {
     },
     removeItem(item) {
       this.$store.commit('removeItemFromCart', item);
+    },
+    saveCart() {
+      this.$store.dispatch('saveCart');
     },
   },
 };
