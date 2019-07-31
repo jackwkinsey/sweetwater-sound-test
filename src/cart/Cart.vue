@@ -2,7 +2,7 @@
   <div>
     <h1>Your Cart</h1>
     <div>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th></th>
@@ -14,19 +14,22 @@
         </thead>
         <tbody>
           <tr v-for="(item, index) in cart" :key="index">
-            <td>
+            <td class="item-image">
               <img :src="item.image" />
             </td>
-            <td>
+            <td class="item-details">
               <h3 class="name">
                 <a :href="item.url" target="_blank">{{ item.productName }}</a> -
                 <small>{{ item.manufacturer }}</small>
               </h3>
               <p class="description">{{ item.description }}</p>
             </td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.price * item.quantity }}</td>
+            <td class="quantity">
+              <div>{{ item.quantity }}</div>
+              <div>({{ item.available }} available)</div>
+            </td>
+            <td class="price">{{ item.price }}</td>
+            <td class="item-total">{{ item.price * item.quantity }}</td>
           </tr>
         </tbody>
       </table>
@@ -58,18 +61,27 @@ export default {
 </script>
 
 <style scoped>
+td {
+  vertical-align: top;
+  padding: 10px 0 10px 0;
+}
+
+h3 {
+  margin-top: 0px;
+}
+
 .item {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.item-image {
-  width: 125px;
-  height: 125px;
+.quantity {
+  width: 100px;
+  text-align: center;
 }
-
-.item-details {
-  width: 450px;
+.price,
+.item-total {
+  text-align: right;
 }
 </style>
