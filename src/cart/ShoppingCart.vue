@@ -44,7 +44,9 @@
       </table>
     </div>
     <div>
-      <strong>Total: {{ total | currency }}</strong>
+      <div class="text-right">
+        <h3>Total: {{ total | currency }}</h3>
+      </div>
     </div>
   </div>
 </template>
