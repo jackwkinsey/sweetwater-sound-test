@@ -12,9 +12,16 @@ export default new Vuex.Store({
     addItemToCart(state, item) {
       state.cart.push(item);
     },
+    removeItemFromCart(state, item) {
+      const index = state.cart.findIndex(i => item.itemid === i.itemid);
+
+      if (index > -1) {
+        state.cart.splice(index, 1);
+      }
+    },
     changeItemQuantity(state, payload) {
       const { item, quantity } = payload;
-      let foundItem = state.cart.find(i => item.itemid === i.itemid);
+      const foundItem = state.cart.find(i => item.itemid === i.itemid);
 
       if (foundItem) {
         foundItem.quantity = quantity;
