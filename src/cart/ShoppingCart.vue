@@ -31,24 +31,33 @@
                 />
               </div>
               <div class="available">({{ item.available }} available)</div>
+              <div>
+                <button @click="removeItem(item)">Remove</button>
+              </div>
             </td>
-            <td class="price">{{ item.price }}</td>
-            <td class="item-total">{{ item.price * item.quantity }}</td>
+            <td class="price">{{ item.price | currency }}</td>
+            <td class="item-total">
+              {{ (item.price * item.quantity) | currency }}
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div>
-      <strong>Total: {{ total }}</strong>
+      <strong>Total: {{ total | currency }}</strong>
     </div>
   </div>
 </template>
 
 <script>
+import currencyFilter from '../filters/currency-filter';
 import QuantitySelector from './QuantitySelector';
 
 export default {
   name: 'Cart',
+  filters: {
+    currency: currencyFilter,
+  },
   components: {
     QuantitySelector,
   },
@@ -72,6 +81,9 @@ export default {
         item,
         quantity: amount,
       });
+    },
+    removeItem(item) {
+      this.$store.commit('removeItemFromCart', item);
     },
   },
 };
