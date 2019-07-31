@@ -28,4 +28,9 @@ export default new Vuex.Store({
       }
     },
   },
+  actions: {
+    saveCart() {
+      // TODO - for bonus
+    },
+  },
 });
