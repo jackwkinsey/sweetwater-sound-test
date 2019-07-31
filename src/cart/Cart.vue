@@ -76,10 +76,15 @@ h3 {
   justify-content: space-between;
 }
 
+.item-details {
+  width: 400px;
+}
+
 .quantity {
   width: 100px;
   text-align: center;
 }
+
 .price,
 .item-total {
   text-align: right;
