@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button @click="decreaseAmount()">-</button>
+    <button class="btn" @click="decreaseAmount()">-</button>
     <span>{{ amount }}</span>
-    <button @click="increaseAmount()">+</button>
+    <button class="btn" @click="increaseAmount()">+</button>
   </div>
 </template>
 

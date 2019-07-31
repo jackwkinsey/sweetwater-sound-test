@@ -32,7 +32,9 @@
               </div>
               <div class="available">({{ item.available }} available)</div>
               <div>
-                <button @click="removeItem(item)">Remove</button>
+                <button class="btn btn-danger btn-sm" @click="removeItem(item)">
+                  Remove
+                </button>
               </div>
             </td>
             <td class="price">{{ item.price | currency }}</td>
@@ -46,7 +48,7 @@
     <div>
       <div class="text-right">
         <h3>Total: {{ total | currency }}</h3>
-        <button @click="saveCart()">Save Cart</button>
+        <button class="btn btn-success" @click="saveCart()">Save Cart</button>
       </div>
     </div>
   </div>
@@ -128,6 +130,7 @@ h3 {
 .price,
 .item-total {
   text-align: right;
+  min-width: 75px;
 }
 
 .description,
