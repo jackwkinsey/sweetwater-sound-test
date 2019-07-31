@@ -15,7 +15,7 @@
         <tbody>
           <tr v-for="(item, index) in cart" :key="index">
             <td class="item-image">
-              <img :src="item.image" class="image img-thumbnail" />
+              <img :src="item.image" class="image" />
             </td>
             <td class="item-details">
               <a :href="item.url" target="_blank">{{ item.productName }}</a>
@@ -23,7 +23,13 @@
               <p class="description">{{ item.description }}</p>
             </td>
             <td class="quantity">
-              <div>{{ item.quantity }}</div>
+              <div>
+                <quantity-selector
+                  :maxAmount="item.available"
+                  :initialAmount="item.quantity"
+                  @amountChanged="amount => amountChanged(item, amount)"
+                />
+              </div>
               <div class="available">({{ item.available }} available)</div>
             </td>
             <td class="price">{{ item.price }}</td>
@@ -39,8 +45,13 @@
 </template>
 
 <script>
+import QuantitySelector from './QuantitySelector';
+
 export default {
   name: 'Cart',
+  components: {
+    QuantitySelector,
+  },
   computed: {
     cart() {
       return this.$store.state.cart;
@@ -53,6 +64,14 @@ export default {
       });
 
       return total;
+    },
+  },
+  methods: {
+    amountChanged(item, amount) {
+      this.$store.commit('changeItemQuantity', {
+        item,
+        quantity: amount,
+      });
     },
   },
 };
@@ -75,8 +94,8 @@ h3 {
 }
 
 .image {
-  width: 100px;
-  height: 100px;
+  width: 100px !important;
+  height: 100px !important;
 }
 
 .item-details {
