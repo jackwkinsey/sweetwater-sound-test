@@ -1,15 +1,15 @@
 <template>
   <div id="app" class="container">
-    <Cart />
+    <shopping-cart />
   </div>
 </template>
 
 <script>
-import Cart from './cart/Cart';
+import ShoppingCart from './cart/ShoppingCart';
 
 export default {
   name: 'app',
-  components: { Cart },
+  components: { ShoppingCart },
 };
 </script>
 

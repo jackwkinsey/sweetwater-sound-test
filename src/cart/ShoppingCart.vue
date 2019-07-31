@@ -8,14 +8,14 @@
             <th></th>
             <th>Description</th>
             <th class="text-center">Qty</th>
-            <th>Price</th>
-            <th>Total</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Total</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(item, index) in cart" :key="index">
             <td class="item-image">
-              <img :src="item.image" class="img-fluid img-thumbnail" />
+              <img :src="item.image" class="image img-thumbnail" />
             </td>
             <td class="item-details">
               <a :href="item.url" target="_blank">{{ item.productName }}</a>
@@ -72,6 +72,11 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
 }
 
 .item-details {
